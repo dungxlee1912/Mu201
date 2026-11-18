@@ -6,9 +6,9 @@
 :root{--bg:#eef3f9;--card:#fff;--tx:#14213d;--mut:#5b6b82;--bd:#d9e2ee;--ac:#0b5cab;--ac2:#e11d48;--ok:#0f9f6e;--warn:#e08a00;--bad:#d92d20;--gray:#b6c0cf;--hd:linear-gradient(135deg,#0b5cab,#1d3f8a);color-scheme:light dark}
 @media(prefers-color-scheme:dark){:root{--bg:#0e1522;--card:#17202f;--tx:#e8eef8;--mut:#93a3bb;--bd:#26334a;--ac:#5aa9ff;--ac2:#ff6b8b;--ok:#34d399;--warn:#fbbf24;--bad:#ff7b72;--gray:#3a4961;--hd:linear-gradient(135deg,#123a73,#1b2f66)}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-header{background:var(--hd);color:#fff;padding:22px 16px 26px}.in{max-width:1100px;margin:0 auto}
+header{background:var(--hd);color:#fff;padding:22px 16px 26px}.in{max-width:1200px;margin:0 auto}
 header h1{font-size:24px;margin:0 0 4px}header p{margin:0;opacity:.85;font-size:14px}
-main{max-width:1100px;margin:-14px auto 0;padding:0 16px 40px}
+main{max-width:1200px;margin:-14px auto 0;padding:0 16px 40px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .s{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;border-top:3px solid var(--ac)}
 .s:nth-child(2){border-top-color:var(--warn)}.s:nth-child(3){border-top-color:var(--ok)}.s:nth-child(4){border-top-color:var(--ac2)}.s:nth-child(5){border-top-color:var(--bad)}
@@ -26,7 +26,7 @@ tr:last-child td{border-bottom:0}
 .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;background:var(--gray)}
 .pill.ok{background:var(--ok)}.pill.late{background:var(--warn)}.pill.bad{background:var(--bad)}.pill.act{background:var(--ac)}
 .none{color:var(--mut)}.foot{color:var(--mut);font-size:13px}a{color:var(--ac)}
-.hd,.day{display:grid;grid-template-columns:92px 1fr 130px 1fr;gap:14px;padding:12px 14px;align-items:start}
+.hd,.day{display:grid;grid-template-columns:92px 1fr 120px 1fr 200px;gap:14px;padding:12px 14px;align-items:start}
 .hd{background:var(--bg);color:var(--mut);font-size:12px;text-transform:uppercase;font-weight:600}
 .day{border-top:1px solid var(--bd)}.dt{font-weight:600}
 .l{color:var(--mut);font-size:13px;margin-top:4px}.l b{color:var(--tx);font-weight:600}
@@ -34,6 +34,8 @@ tr:last-child td{border-bottom:0}
 .tag{font-size:11px;font-weight:700;color:#fff;border-radius:4px;padding:2px 6px;margin-right:6px}
 .emp{padding:8px 14px;border-top:1px solid var(--bd);color:var(--mut);font-size:13px}
 @media(max-width:780px){.hd{display:none}.day{grid-template-columns:1fr;gap:8px}.cn{text-align:left}.m{display:inline;color:var(--mut);font-size:13px}.dt{font-size:16px}}
+.fcg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;padding:10px 14px 14px}
+.fci{border:1px solid var(--bd);border-radius:10px;padding:10px 12px}.fci b{display:block;margin-bottom:2px}
 </style></head><body>
 <header><div class="in"><h1>✈️ Hà Nội → Thượng Hải → MU201</h1><p id="sub">Đang tải…</p></div></header>
 <main>
@@ -47,11 +49,18 @@ tr:last-child td{border-bottom:0}
 <div class="card"><h2>MU6014 · Hà Nội → Thượng Hải: số phút trễ khi đến</h2><div class="cap" id="c1t"></div><div class="chart" id="c1"></div></div>
 <div class="card"><h2>MU201: số phút trễ khi đến</h2><div class="cap" id="c2t"></div><div class="chart" id="c2"></div>
 <div class="leg"><span><i style="background:var(--ok)"></i>Đúng giờ (≤ 15 phút)</span><span><i style="background:var(--warn)"></i>Trễ</span><span><i style="background:var(--bad)"></i>Hủy / chuyển hướng</span><span><i style="background:var(--gray)"></i>Chưa có dữ liệu</span></div></div>
-<div class="card"><div class="hd"><div>Ngày</div><div>MU6014 (HAN → PVG)</div><div style="text-align:center">Nối tại PVG</div><div>MU201</div></div><div id="rows"></div></div>
-<p class="foot">MU201 ở mỗi dòng là chuyến nối với MU6014 của dòng đó (có thể cất cánh sau nửa đêm, ngày hiện cạnh tuyến bay). Thời gian nối chuyến (ví dụ 2h45p = 2 giờ 45 phút) = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 1 giờ được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+<div class="card"><h2 id="fct">Dự báo thời tiết London</h2><div class="fcg" id="fcg"></div></div>
+<div class="card"><div class="hd"><div>Ngày</div><div>MU6014 (HAN → PVG)</div><div style="text-align:center">Nối tại PVG</div><div>MU201</div><div>Thời tiết London</div></div><div id="rows"></div></div>
+<p class="foot">MU201 ở mỗi dòng là chuyến nối với MU6014 của dòng đó (có thể cất cánh sau nửa đêm, ngày hiện cạnh tuyến bay). Thời gian nối chuyến (ví dụ 2h45p = 2 giờ 45 phút) = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 1 giờ được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Thời tiết lấy từ Open-Meteo cho khu vực sân bay Gatwick (ngày đã qua là số liệu ước tính, ngày tới là dự báo), tính tại giờ MU201 đến London. Dữ liệu chuyến bay cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
 </main>
 <script>
 var L={scheduled:["Theo lịch",""],active:["Đang bay","act"],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
+var W=null;
+function bw(j){try{var hi={},di={};j.hourly.time.forEach(function(t,i){hi[t]=i});j.daily.time.forEach(function(t,i){di[t]=i});return{j:j,hi:hi,di:di}}catch(e){return null}}
+function wc(c){if(c===0)return["☀️","Trời quang"];if(c<=2)return["🌤️","Ít mây"];if(c===3)return["☁️","Nhiều mây"];if(c===45||c===48)return["🌫️","Sương mù"];if(c>=51&&c<=57)return["🌦️","Mưa phùn"];if(c>=61&&c<=67)return["🌧️","Mưa"];if(c>=71&&c<=77)return["🌨️","Tuyết"];if(c>=80&&c<=82)return["🌦️","Mưa rào"];if(c>=85&&c<=86)return["🌨️","Tuyết rào"];if(c>=95)return["⛈️","Dông"];return["🌡️","–"]}
+function wxHtml(d,h){if(!W)return '<span class="none">Không tải được</span>';var i=W.hi[d+"T"+String(h).padStart(2,"0")+":00"],k=W.di[d];if(i==null||k==null)return '<span class="none">Chưa có dự báo</span>';
+ var H=W.j.hourly,D=W.j.daily,w=wc(H.weather_code[i]),p=D.precipitation_probability_max[k],v=H.visibility[i];
+ return '<div>'+w[0]+' <b>'+w[1]+'</b> · '+Math.round(H.temperature_2m[i])+'°C</div><div class="l">Cả ngày: '+Math.round(D.temperature_2m_min[k])+'–'+Math.round(D.temperature_2m_max[k])+'°C'+(p!=null?' · mưa '+p+'%':'')+'</div><div class="l">Gió '+Math.round(H.wind_speed_10m[i])+' km/h'+(v!=null?' · tầm nhìn '+(v>=10000?Math.round(v/1000):(v/1000).toFixed(1))+' km':'')+'</div>'}
 function $(i){return document.getElementById(i)}
 function hm(s){return s?s.slice(11,16):"–"}
 function pair(p){return p?hm(p.scheduled)+" → "+hm(p.actual||p.estimated):"–"}
@@ -79,7 +88,8 @@ function chart(id,S){
   if(i%5===0||i===29)s+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" style="fill:var(--mut)">'+p.lab.split(", ").pop()+'</text>'});
  $(id).innerHTML=s+'</svg>'}
 function cap(id,S){$(id).textContent=S.n+"/30 ngày có dữ liệu · đúng giờ "+(S.cnt?Math.round(S.ok/S.cnt*100)+"%":"–")+" · trễ TB "+(S.cnt?Math.round(S.sum/S.cnt)+" phút":"–")+" · hủy/chuyển hướng "+S.bad}
-fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(db){
+var WP=fetch("https://api.open-meteo.com/v1/forecast?latitude=51.1481&longitude=-0.1903&hourly=temperature_2m,weather_code,wind_speed_10m,visibility&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FLondon&past_days=31&forecast_days=7").then(function(r){return r.json()}).catch(function(){return null});
+Promise.all([fetch("data.json?"+Date.now()).then(function(r){return r.json()}),WP]).then(function(z){var db=z[0];W=bw(z[1]);
  var F=db.flights||{},ks=Object.keys(F);if(ks.length&&/^\d{4}-/.test(ks[0]))F={MU201:F};
  var A=F.MU6014||{},B=F.MU201||{},now=new Date(),days=[];
  $("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu, workflow chưa chạy lần nào.";
@@ -95,6 +105,11 @@ fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(
  days.forEach(function(x){var a=A[x.k],m=mate(x.k,a),b=m&&m.e;
   if(!a&&!b){empt.push(x.k);return}
   flush();
+ var lb=null;Object.keys(B).sort().forEach(function(k){if(B[k].arr&&B[k].arr.scheduled)lb=B[k]});
+ var fh=lb?+lb.arr.scheduled.slice(11,13):6,fm=lb?lb.arr.scheduled.slice(11,16):"06:00",
+  base=new Date(new Date().toLocaleDateString("en-CA",{timeZone:"Europe/London"})+"T00:00:00"),fg="";
+ for(var q=0;q<3;q++){var dd=new Date(base);dd.setDate(base.getDate()+q);fg+='<div class="fci"><b>'+dd.toLocaleDateString("vi-VN",{weekday:"short",day:"2-digit",month:"2-digit"})+'</b>'+wxHtml(iso(dd),fh)+'</div>'}
+ $("fcg").innerHTML=fg;$("fct").textContent="Dự báo thời tiết London · 3 ngày tới (lúc "+fm+", giờ MU201 đến)";
   var v=null,c='<span class="none">–</span>';
   if(a&&b&&a.arr){var ra=T(a.arr.actual||a.arr.estimated||a.arr.scheduled);if(ra!=null&&okb(b))v=Math.round((T(b.dep.scheduled)-ra)/60000)}
   if(v!=null){if(v<0){lost++;c='<span class="pill bad">Lỡ nối '+dur(-v)+'</span>'}
@@ -104,7 +119,8 @@ fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(
    :'<div class="none"><span class="tag" style="background:var(--ac)">MU6014</span>Chưa có dữ liệu</div>';
   var hb=b?'<div><div><span class="tag" style="background:var(--ac2)">MU201</span>'+pill(b)+' <span class="l">'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+' · '+sd(m.k)+'</span></div><div class="l">Đi '+(b.dep.iata||"")+': <b>'+pair(b.dep)+'</b>'+gx(b.dep)+'</div><div class="l">Đến '+(b.arr.iata||"")+': <b>'+pair(b.arr)+'</b> · trễ '+dtxt(b)+'</div></div>'
    :'<div class="none"><span class="tag" style="background:var(--ac2)">MU201</span>Chưa có dữ liệu</div>';
-  tb.insertAdjacentHTML("beforeend",'<div class="day"><div class="dt">'+x.lab+'</div>'+ha+'<div class="cn"><span class="m">Nối chuyến tại PVG: </span>'+c+'</div>'+hb+'</div>')});
+  var hw=b&&b.arr&&b.arr.scheduled?'<div><span class="m">Thời tiết London: </span>'+wxHtml(b.arr.scheduled.slice(0,10),+b.arr.scheduled.slice(11,13))+'</div>':'<div class="none">–</div>';
+  tb.insertAdjacentHTML("beforeend",'<div class="day"><div class="dt">'+x.lab+'</div>'+ha+'<div class="cn"><span class="m">Nối chuyến tại PVG: </span>'+c+'</div>'+hb+hw+'</div>')});
  flush();
  var SA=stat(A,days),SB=stat(B,days);
  chart("c1",SA);chart("c2",SB);cap("c1t",SA);cap("c2t",SB);
