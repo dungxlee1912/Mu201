@@ -74,5 +74,9 @@
    }
   }
  },
- "updated": "2026-11-18T02:52:28Z"
+ "updated": "2026-11-18T02:56:57Z",
+ "use": {
+  "MU201": "flight_iata",
+  "MU6014": "flight_iata"
+ }
 }
