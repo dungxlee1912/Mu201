@@ -26,10 +26,10 @@
    },
    "2026-11-18": {
     "arr": {
-     "actual": null,
+     "actual": "2026-11-18T06:15:00+00:00",
      "airport": "Gatwick",
      "delay": 0,
-     "estimated": "2026-11-18T06:21:00+00:00",
+     "estimated": "2026-11-18T06:15:00+00:00",
      "gate": null,
      "iata": "LGW",
      "scheduled": "2026-11-18T06:30:00+00:00",
@@ -45,7 +45,7 @@
      "scheduled": "2026-11-18T01:50:00+00:00",
      "terminal": "1"
     },
-    "status": "active"
+    "status": "landed"
    }
   },
   "MU6014": {
@@ -71,10 +71,33 @@
      "terminal": "2"
     },
     "status": "landed"
+   },
+   "2026-11-18": {
+    "arr": {
+     "actual": null,
+     "airport": "Shanghai Pudong International",
+     "delay": null,
+     "estimated": null,
+     "gate": null,
+     "iata": "PVG",
+     "scheduled": "2026-11-18T22:50:00+00:00",
+     "terminal": "1"
+    },
+    "dep": {
+     "actual": null,
+     "airport": "Noibai International",
+     "delay": 0,
+     "estimated": "2026-11-18T18:45:00+00:00",
+     "gate": "41",
+     "iata": "HAN",
+     "scheduled": "2026-11-18T18:45:00+00:00",
+     "terminal": "2"
+    },
+    "status": "scheduled"
    }
   }
  },
- "updated": "2026-11-18T02:56:57Z",
+ "updated": "2026-11-18T08:34:32Z",
  "use": {
   "MU201": "flight_iata",
   "MU6014": "flight_iata"
