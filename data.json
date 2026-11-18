@@ -1,51 +1,78 @@
 {
  "flights": {
-  "2026-11-17": {
-   "arr": {
-    "actual": "2026-11-17T06:08:00+00:00",
-    "airport": "Gatwick",
-    "delay": 0,
-    "estimated": "2026-11-17T06:10:00+00:00",
-    "gate": null,
-    "iata": "LGW",
-    "scheduled": "2026-11-17T06:30:00+00:00",
-    "terminal": "N"
+  "MU201": {
+   "2026-11-17": {
+    "arr": {
+     "actual": "2026-11-17T06:08:00+00:00",
+     "airport": "Gatwick",
+     "delay": 0,
+     "estimated": "2026-11-17T06:10:00+00:00",
+     "gate": null,
+     "iata": "LGW",
+     "scheduled": "2026-11-17T06:30:00+00:00",
+     "terminal": "N"
+    },
+    "dep": {
+     "actual": "2026-11-17T02:08:00+00:00",
+     "airport": "Shanghai Pudong International",
+     "delay": 18,
+     "estimated": "2026-11-17T01:50:00+00:00",
+     "gate": "G117",
+     "iata": "PVG",
+     "scheduled": "2026-11-17T01:50:00+00:00",
+     "terminal": "1"
+    },
+    "status": "landed"
    },
-   "dep": {
-    "actual": "2026-11-17T02:08:00+00:00",
-    "airport": "Shanghai Pudong International",
-    "delay": 18,
-    "estimated": "2026-11-17T01:50:00+00:00",
-    "gate": "G117",
-    "iata": "PVG",
-    "scheduled": "2026-11-17T01:50:00+00:00",
-    "terminal": "1"
-   },
-   "status": "landed"
+   "2026-11-18": {
+    "arr": {
+     "actual": null,
+     "airport": "Gatwick",
+     "delay": 0,
+     "estimated": "2026-11-18T06:21:00+00:00",
+     "gate": null,
+     "iata": "LGW",
+     "scheduled": "2026-11-18T06:30:00+00:00",
+     "terminal": "N"
+    },
+    "dep": {
+     "actual": "2026-11-18T02:09:00+00:00",
+     "airport": "Shanghai Pudong International",
+     "delay": 19,
+     "estimated": "2026-11-18T01:50:00+00:00",
+     "gate": "G133",
+     "iata": "PVG",
+     "scheduled": "2026-11-18T01:50:00+00:00",
+     "terminal": "1"
+    },
+    "status": "active"
+   }
   },
-  "2026-11-18": {
-   "arr": {
-    "actual": null,
-    "airport": "Gatwick",
-    "delay": 0,
-    "estimated": "2026-11-18T06:18:00+00:00",
-    "gate": null,
-    "iata": "LGW",
-    "scheduled": "2026-11-18T06:30:00+00:00",
-    "terminal": "N"
-   },
-   "dep": {
-    "actual": "2026-11-18T02:09:00+00:00",
-    "airport": "Shanghai Pudong International",
-    "delay": 19,
-    "estimated": "2026-11-18T01:50:00+00:00",
-    "gate": "G133",
-    "iata": "PVG",
-    "scheduled": "2026-11-18T01:50:00+00:00",
-    "terminal": "1"
-   },
-   "status": "active"
+  "MU6014": {
+   "2026-11-17": {
+    "arr": {
+     "actual": "2026-11-17T22:46:00+00:00",
+     "airport": "Shanghai Pudong International",
+     "delay": 0,
+     "estimated": "2026-11-17T22:46:00+00:00",
+     "gate": null,
+     "iata": "PVG",
+     "scheduled": "2026-11-17T22:50:00+00:00",
+     "terminal": "1"
+    },
+    "dep": {
+     "actual": "2026-11-17T19:06:00+00:00",
+     "airport": "Noibai International",
+     "delay": 21,
+     "estimated": "2026-11-17T18:45:00+00:00",
+     "gate": "46",
+     "iata": "HAN",
+     "scheduled": "2026-11-17T18:45:00+00:00",
+     "terminal": "2"
+    },
+    "status": "landed"
+   }
   }
  },
- "updated": "2026-11-18T02:28:48Z"
+ "updated": "2026-11-18T02:52:28Z"
 }
