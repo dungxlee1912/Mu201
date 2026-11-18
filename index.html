@@ -26,11 +26,19 @@ tr:last-child td{border-bottom:0}
 .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;background:var(--gray)}
 .pill.ok{background:var(--ok)}.pill.late{background:var(--warn)}.pill.bad{background:var(--bad)}.pill.act{background:var(--ac)}
 .none{color:var(--mut)}.foot{color:var(--mut);font-size:13px}a{color:var(--ac)}
+.hd,.day{display:grid;grid-template-columns:92px 1fr 130px 1fr;gap:14px;padding:12px 14px;align-items:start}
+.hd{background:var(--bg);color:var(--mut);font-size:12px;text-transform:uppercase;font-weight:600}
+.day{border-top:1px solid var(--bd)}.dt{font-weight:600}
+.l{color:var(--mut);font-size:13px;margin-top:4px}.l b{color:var(--tx);font-weight:600}
+.cn{text-align:center}.m{display:none}
+.tag{font-size:11px;font-weight:700;color:#fff;border-radius:4px;padding:2px 6px;margin-right:6px}
+.emp{padding:8px 14px;border-top:1px solid var(--bd);color:var(--mut);font-size:13px}
+@media(max-width:780px){.hd{display:none}.day{grid-template-columns:1fr;gap:8px}.cn{text-align:left}.m{display:inline;color:var(--mut);font-size:13px}.dt{font-size:16px}}
 </style></head><body>
 <header><div class="in"><h1>✈️ Hà Nội → Thượng Hải → MU201</h1><p id="sub">Đang tải…</p></div></header>
 <main>
 <div class="stats">
-<div class="s"><b id="a1">–</b><span>Thời gian nối chuyến TB (phút)</span></div>
+<div class="s"><b id="a1">–</b><span>Thời gian nối chuyến TB</span></div>
 <div class="s"><b id="a2">–</b><span>Nối sát (&lt; 60 phút) / lỡ nối</span></div>
 <div class="s"><b id="a3">–</b><span>MU6014 đúng giờ</span></div>
 <div class="s"><b id="a4">–</b><span>MU201 đúng giờ</span></div>
@@ -39,11 +47,8 @@ tr:last-child td{border-bottom:0}
 <div class="card"><h2>MU6014 · Hà Nội → Thượng Hải: số phút trễ khi đến</h2><div class="cap" id="c1t"></div><div class="chart" id="c1"></div></div>
 <div class="card"><h2>MU201: số phút trễ khi đến</h2><div class="cap" id="c2t"></div><div class="chart" id="c2"></div>
 <div class="leg"><span><i style="background:var(--ok)"></i>Đúng giờ (≤ 15 phút)</span><span><i style="background:var(--warn)"></i>Trễ</span><span><i style="background:var(--bad)"></i>Hủy / chuyển hướng</span><span><i style="background:var(--gray)"></i>Chưa có dữ liệu</span></div></div>
-<div class="card"><div class="wrap"><table><thead>
-<tr><th></th><th class="g" colspan="5">MU6014 (HAN → PVG)</th><th class="g g3">Nối</th><th class="g g2" colspan="6">MU201</th></tr>
-<tr><th>Ngày</th><th>Tình trạng</th><th>Đi HAN</th><th>Đến PVG</th><th>Trễ đến</th><th>Cổng đến</th><th>Tại PVG</th><th>Tình trạng</th><th>Tuyến</th><th>Đi PVG</th><th>Đến</th><th>Trễ đến</th><th>Cổng đi</th></tr>
-</thead><tbody id="rows"></tbody></table></div></div>
-<p class="foot">MU201 ở mỗi dòng là chuyến nối với MU6014 của dòng đó (có thể cất cánh sau nửa đêm, ngày hiện cạnh tuyến bay). Cột "Nối" = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 60 phút được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+<div class="card"><div class="hd"><div>Ngày</div><div>MU6014 (HAN → PVG)</div><div style="text-align:center">Nối tại PVG</div><div>MU201</div></div><div id="rows"></div></div>
+<p class="foot">MU201 ở mỗi dòng là chuyến nối với MU6014 của dòng đó (có thể cất cánh sau nửa đêm, ngày hiện cạnh tuyến bay). Thời gian nối chuyến (ví dụ 2h45p = 2 giờ 45 phút) = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 1 giờ được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
 </main>
 <script>
 var L={scheduled:["Theo lịch",""],active:["Đang bay","act"],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
@@ -53,6 +58,7 @@ function pair(p){return p?hm(p.scheduled)+" → "+hm(p.actual||p.estimated):"–
 function gt(s){if(!s)return "–";var a=[];if(s.terminal)a.push("T"+s.terminal);if(s.gate)a.push("Cổng "+s.gate);return a.join(" · ")||"–"}
 function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 function T(s){return s?Date.parse(s.slice(0,16)+":00Z"):null}
+function dur(m){var x=Math.abs(m),r=x%60,hh=Math.floor(x/60);return hh?hh+"h"+String(r).padStart(2,"0")+"p":r+"p"}
 function nxt(k){var d=new Date(k+"T00:00:00");d.setDate(d.getDate()+1);return iso(d)}
 function dly(e){if(e.arr&&e.arr.delay!=null)return e.arr.delay;return e.dep&&e.dep.delay!=null?e.dep.delay:null}
 function cls(e){if(!e)return{t:"none"};if(e.status==="cancelled"||e.status==="diverted"||e.status==="incident")return{t:"bad"};var d=dly(e);return d==null?{t:"none"}:{t:d>15?"late":"ok",v:d}}
@@ -82,21 +88,27 @@ fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(
  function mate(k,a){var b0=B[k],k1=nxt(k),b1=B[k1],sa=a&&a.arr?T(a.arr.scheduled):null;
   if(sa!=null){if(okb(b0)&&T(b0.dep.scheduled)>=sa)return{e:b0,k:k};if(okb(b1)&&T(b1.dep.scheduled)>=sa)return{e:b1,k:k1};return null}
   if(okb(b1)&&+b1.dep.scheduled.slice(11,13)<12)return{e:b1,k:k1};return b0?{e:b0,k:k}:null}
- var tb=$("rows"),bufs=[],tight=0,lost=0;
- days.forEach(function(x){var a=A[x.k],m=mate(x.k,a),b=m&&m.e,h="<td>"+x.lab+"</td>";
-  if(!a&&!b){tb.insertAdjacentHTML("beforeend",'<tr><td>'+x.lab+'</td><td class="none" colspan="12">Chưa có dữ liệu</td></tr>');return}
-  h+=a?'<td>'+pill(a)+'</td><td>'+pair(a.dep)+'</td><td>'+pair(a.arr)+'</td><td>'+dtxt(a)+'</td><td>'+gt(a.arr)+'</td>':'<td class="none" colspan="5">Chưa có dữ liệu</td>';
-  var v=null,c='<td class="none">–</td>';
+ var tb=$("rows"),bufs=[],tight=0,lost=0,empt=[];
+ function sd(k){return k.slice(8)+"/"+k.slice(5,7)}
+ function gx(s){var g=gt(s);return g==="–"?"":" · "+g}
+ function flush(){if(!empt.length)return;tb.insertAdjacentHTML("beforeend",'<div class="emp">'+(empt.length>1?sd(empt[empt.length-1])+" – "+sd(empt[0]):sd(empt[0]))+' · chưa có dữ liệu</div>');empt=[]}
+ days.forEach(function(x){var a=A[x.k],m=mate(x.k,a),b=m&&m.e;
+  if(!a&&!b){empt.push(x.k);return}
+  flush();
+  var v=null,c='<span class="none">–</span>';
   if(a&&b&&a.arr){var ra=T(a.arr.actual||a.arr.estimated||a.arr.scheduled);if(ra!=null&&okb(b))v=Math.round((T(b.dep.scheduled)-ra)/60000)}
-  if(v!=null){if(v<0){lost++;c='<td><span class="pill bad">Lỡ nối '+(-v)+' phút</span></td>'}
-   else if(v>=720)c='<td><span class="pill ok">Qua đêm</span></td>';
-   else{bufs.push(v);if(v<60){tight++;c='<td><span class="pill late">'+v+' phút</span></td>'}else c='<td><span class="pill ok">'+v+' phút</span></td>'}}
-  h+=c;
-  h+=b?'<td>'+pill(b)+'</td><td>'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+' · '+m.k.slice(8)+'/'+m.k.slice(5,7)+'</td><td>'+pair(b.dep)+'</td><td>'+pair(b.arr)+'</td><td>'+dtxt(b)+'</td><td>'+gt(b.dep)+'</td>':'<td class="none" colspan="6">Chưa có dữ liệu</td>';
-  tb.insertAdjacentHTML("beforeend","<tr>"+h+"</tr>")});
+  if(v!=null){if(v<0){lost++;c='<span class="pill bad">Lỡ nối '+dur(-v)+'</span>'}
+   else if(v>=720)c='<span class="pill ok">Qua đêm</span>';
+   else{bufs.push(v);if(v<60)tight++;c='<span class="pill '+(v<60?"late":"ok")+'">'+dur(v)+'</span>'}}
+  var ha=a?'<div><div><span class="tag" style="background:var(--ac)">MU6014</span>'+pill(a)+'</div><div class="l">Đi HAN: <b>'+pair(a.dep)+'</b></div><div class="l">Đến PVG: <b>'+pair(a.arr)+'</b> · trễ '+dtxt(a)+gx(a.arr)+'</div></div>'
+   :'<div class="none"><span class="tag" style="background:var(--ac)">MU6014</span>Chưa có dữ liệu</div>';
+  var hb=b?'<div><div><span class="tag" style="background:var(--ac2)">MU201</span>'+pill(b)+' <span class="l">'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+' · '+sd(m.k)+'</span></div><div class="l">Đi '+(b.dep.iata||"")+': <b>'+pair(b.dep)+'</b>'+gx(b.dep)+'</div><div class="l">Đến '+(b.arr.iata||"")+': <b>'+pair(b.arr)+'</b> · trễ '+dtxt(b)+'</div></div>'
+   :'<div class="none"><span class="tag" style="background:var(--ac2)">MU201</span>Chưa có dữ liệu</div>';
+  tb.insertAdjacentHTML("beforeend",'<div class="day"><div class="dt">'+x.lab+'</div>'+ha+'<div class="cn"><span class="m">Nối chuyến tại PVG: </span>'+c+'</div>'+hb+'</div>')});
+ flush();
  var SA=stat(A,days),SB=stat(B,days);
  chart("c1",SA);chart("c2",SB);cap("c1t",SA);cap("c2t",SB);
- $("a1").textContent=bufs.length?Math.round(bufs.reduce(function(p,q){return p+q},0)/bufs.length):"–";
+ $("a1").textContent=bufs.length?dur(Math.round(bufs.reduce(function(p,q){return p+q},0)/bufs.length)):"–";
  $("a2").textContent=bufs.length||lost?tight+" / "+lost:"–";
  $("a3").textContent=SA.cnt?Math.round(SA.ok/SA.cnt*100)+"%":"–";
  $("a4").textContent=SB.cnt?Math.round(SB.ok/SB.cnt*100)+"%":"–";
