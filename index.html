@@ -3,51 +3,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Theo dõi chuyến bay MU201</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--tx:#1b1f24;--mut:#667085;--bd:#e3e6ea;--ok:#12805c;--warn:#b54708;--bad:#b42318;--gray:#98a2b3;color-scheme:light dark}
-@media(prefers-color-scheme:dark){:root{--bg:#14161a;--card:#1d2026;--tx:#eceef1;--mut:#9aa3b2;--bd:#2c313a;--ok:#3ddc97;--warn:#ffb255;--bad:#ff7b72;--gray:#6b7280}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,sans-serif}
-main{max-width:980px;margin:0 auto;padding:20px 16px 40px}h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 16px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
-.s{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px}.s b{display:block;font-size:22px}.s span{color:var(--mut);font-size:13px}
-.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--bd);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:680px}th,td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}
-th{font-size:12px;color:var(--mut);text-transform:uppercase}.ok{color:var(--ok)}.late{color:var(--warn)}.bad{color:var(--bad)}.none{color:var(--gray)}
-a{color:inherit}
-</style></head><body><main>
-<h1>✈️ MU201 · China Eastern Airlines</h1>
-<p class="sub" id="sub">Đang tải…</p>
+:root{--bg:#eef3f9;--card:#fff;--tx:#14213d;--mut:#5b6b82;--bd:#d9e2ee;--ac:#0b5cab;--ac2:#e11d48;--ok:#0f9f6e;--warn:#e08a00;--bad:#d92d20;--gray:#b6c0cf;--hd:linear-gradient(135deg,#0b5cab,#1d3f8a);color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1522;--card:#17202f;--tx:#e8eef8;--mut:#93a3bb;--bd:#26334a;--ac:#5aa9ff;--ac2:#ff6b8b;--ok:#34d399;--warn:#fbbf24;--bad:#ff7b72;--gray:#3a4961;--hd:linear-gradient(135deg,#123a73,#1b2f66)}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--hd);color:#fff;padding:22px 16px 26px}
+.in{max-width:1040px;margin:0 auto}
+header h1{font-size:24px;margin:0 0 4px}header p{margin:0;opacity:.85;font-size:14px}
+main{max-width:1040px;margin:-14px auto 0;padding:0 16px 40px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.s{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;border-top:3px solid var(--ac)}
+.s:nth-child(2){border-top-color:var(--ok)}.s:nth-child(3){border-top-color:var(--warn)}.s:nth-child(4){border-top-color:var(--bad)}.s:nth-child(5){border-top-color:var(--ac2)}
+.s b{display:block;font-size:22px}.s span{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.card h2{font-size:15px;margin:0;padding:12px 14px 0}
+.chart{overflow-x:auto;padding:6px 10px 10px}
+.leg{display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:12px;padding:0 14px 10px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:900px}th,td{padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}
+th{font-size:12px;color:var(--mut);text-transform:uppercase;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;background:var(--gray)}
+.pill.ok{background:var(--ok)}.pill.late{background:var(--warn)}.pill.bad{background:var(--bad)}.pill.act{background:var(--ac)}
+.none{color:var(--mut)}
+.foot{color:var(--mut);font-size:13px}a{color:var(--ac)}
+</style></head><body>
+<header><div class="in"><h1>✈️ MU201 · China Eastern Airlines</h1><p id="sub">Đang tải…</p></div></header>
+<main>
 <div class="stats">
 <div class="s"><b id="a1">–</b><span>Ngày có dữ liệu</span></div>
 <div class="s"><b id="a2">–</b><span>Tỷ lệ đúng giờ</span></div>
-<div class="s"><b id="a3">–</b><span>Trễ TB khi đến (phút)</span></div>
+<div class="s"><b id="a3">–</b><span>Trễ trung bình (phút)</span></div>
 <div class="s"><b id="a4">–</b><span>Hủy / chuyển hướng</span></div>
+<div class="s"><b id="a5">–</b><span>Trễ nhiều nhất (phút)</span></div>
 </div>
-<div class="wrap"><table><thead><tr><th>Ngày</th><th>Tình trạng</th><th>Tuyến</th><th>Đi (dự kiến → thực tế)</th><th>Đến (dự kiến → thực tế)</th><th>Trễ đến</th></tr></thead><tbody id="rows"></tbody></table></div>
-<p class="sub" style="margin-top:12px">Dữ liệu tự cập nhật 2 lần mỗi ngày từ Aviationstack. Giờ hiển thị là giờ địa phương tại từng sân bay. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+<div class="card"><h2>Số phút trễ khi đến, 30 ngày gần nhất</h2>
+<div class="chart" id="chart"></div>
+<div class="leg"><span><i style="background:var(--ok)"></i>Đúng giờ (≤ 15 phút)</span><span><i style="background:var(--warn)"></i>Trễ</span><span><i style="background:var(--bad)"></i>Hủy / chuyển hướng</span><span><i style="background:var(--gray)"></i>Chưa có dữ liệu</span></div></div>
+<div class="card"><div class="wrap"><table><thead><tr><th>Ngày</th><th>Tình trạng</th><th>Tuyến</th><th>Đi (dự kiến → thực tế)</th><th>Đến (dự kiến → thực tế)</th><th>Cổng đi</th><th>Cổng đến</th><th>Trễ đến</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+<p class="foot">Dữ liệu tự cập nhật 2 lần mỗi ngày từ Aviationstack. Giờ hiển thị là giờ địa phương tại từng sân bay. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+</main>
 <script>
-var L={scheduled:["Theo lịch",""],active:["Đang bay",""],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
+var L={scheduled:["Theo lịch",""],active:["Đang bay","act"],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
 function hm(s){return s?s.slice(11,16):"–"}
+function gt(s){if(!s)return "–";var a=[];if(s.terminal)a.push("T"+s.terminal);if(s.gate)a.push("Cổng "+s.gate);return a.join(" · ")||"–"}
 function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function el(id){return document.getElementById(id)}
 fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(db){
- var f=db.flights||{},tb=document.getElementById("rows"),n=0,ok=0,sum=0,cnt=0,bad=0,now=new Date();
- document.getElementById("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu — workflow chưa chạy lần nào.";
+ var f=db.flights||{},tb=el("rows"),n=0,ok=0,sum=0,cnt=0,bad=0,mx=0,now=new Date(),pts=[];
+ el("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu, workflow chưa chạy lần nào.";
  for(var i=0;i<30;i++){
   var d=new Date(now);d.setDate(now.getDate()-i);var k=iso(d),e=f[k],tr=document.createElement("tr");
   var lab=d.toLocaleDateString("vi-VN",{weekday:"short",day:"2-digit",month:"2-digit"});
-  if(!e){tr.innerHTML='<td>'+lab+'</td><td class="none" colspan="5">Chưa có dữ liệu</td>';tb.appendChild(tr);continue}
+  if(!e){pts.push({lab:lab,t:"none"});tr.innerHTML='<td>'+lab+'</td><td class="none" colspan="7">Chưa có dữ liệu</td>';tb.appendChild(tr);continue}
   n++;var dl=e.arr&&e.arr.delay!=null?e.arr.delay:(e.dep&&e.dep.delay!=null?e.dep.delay:null);
-  var m=L[e.status]||[e.status||"?",""],cls=m[1];
+  var m=L[e.status]||[e.status||"?",""],cls=m[1],isBad=(e.status==="cancelled"||e.status==="diverted"||e.status==="incident");
   if(!cls&&dl!=null)cls=dl>15?"late":"ok";
-  if(e.status==="cancelled"||e.status==="diverted"||e.status==="incident")bad++;
-  else if(dl!=null){sum+=dl;cnt++;if(dl<=15)ok++}
-  tr.innerHTML='<td>'+lab+'</td><td class="'+cls+'">'+m[0]+'</td><td>'+(e.dep.iata||"?")+' → '+(e.arr.iata||"?")+'</td>'
+  if(isBad){bad++;pts.push({lab:lab,t:"bad"})}
+  else if(dl!=null){sum+=dl;cnt++;if(dl<=15)ok++;if(dl>mx)mx=dl;pts.push({lab:lab,t:dl>15?"late":"ok",v:dl})}
+  else pts.push({lab:lab,t:"none"});
+  tr.innerHTML='<td>'+lab+'</td><td><span class="pill '+cls+'">'+m[0]+'</span></td><td>'+(e.dep.iata||"?")+' → '+(e.arr.iata||"?")+'</td>'
    +'<td>'+hm(e.dep.scheduled)+' → '+hm(e.dep.actual||e.dep.estimated)+'</td>'
-   +'<td>'+hm(e.arr.scheduled)+' → '+hm(e.arr.actual||e.arr.estimated)+'</td><td>'+(dl==null?"–":dl+" ph")+'</td>';
+   +'<td>'+hm(e.arr.scheduled)+' → '+hm(e.arr.actual||e.arr.estimated)+'</td>'
+   +'<td>'+gt(e.dep)+'</td><td>'+gt(e.arr)+'</td><td>'+(dl==null?"–":dl+" phút")+'</td>';
   tb.appendChild(tr);
  }
- document.getElementById("a1").textContent=n+"/30";
- document.getElementById("a2").textContent=cnt?Math.round(ok/cnt*100)+"%":"–";
- document.getElementById("a3").textContent=cnt?Math.round(sum/cnt):"–";
- document.getElementById("a4").textContent=n?bad:"–";
-}).catch(function(){document.getElementById("sub").textContent="Không đọc được data.json"});
-</script></main></body></html>
+ el("a1").textContent=n+"/30";
+ el("a2").textContent=cnt?Math.round(ok/cnt*100)+"%":"–";
+ el("a3").textContent=cnt?Math.round(sum/cnt):"–";
+ el("a4").textContent=n?bad:"–";
+ el("a5").textContent=cnt?mx:"–";
+ // Biểu đồ cột (cũ → mới)
+ pts.reverse();
+ var W=720,H=200,pl=34,pb=26,pt=10,cw=(W-pl-8)/30,top=Math.max(30,Math.ceil(mx/10)*10),ph=H-pb-pt;
+ function Y(v){return pt+ph-v/top*ph}
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="min-width:560px;max-height:240px" role="img" aria-label="Biểu đồ số phút trễ">';
+ [0,15,top].forEach(function(v,ix){s+='<line x1="'+pl+'" x2="'+(W-8)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" style="stroke:var(--bd)"'+(v===15?' stroke-dasharray="4 3"':'')+'/><text x="'+(pl-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="10" style="fill:var(--mut)">'+v+'</text>'});
+ pts.forEach(function(p,i){
+  var x=pl+i*cw+cw*.15,w=cw*.7,c;
+  if(p.t==="ok"||p.t==="late"){var h=Math.max(2,p.v/top*ph);s+='<rect x="'+x+'" y="'+(pt+ph-h)+'" width="'+w+'" height="'+h+'" rx="3" style="fill:var(--'+(p.t==="ok"?"ok":"warn")+')"><title>'+p.lab+': trễ '+p.v+' phút</title></rect>'}
+  else if(p.t==="bad"){s+='<rect x="'+x+'" y="'+(pt+ph-ph*.5)+'" width="'+w+'" height="'+ph*.5+'" rx="3" style="fill:var(--bad)"><title>'+p.lab+': hủy / chuyển hướng</title></rect>'}
+  else{s+='<rect x="'+x+'" y="'+(pt+ph-3)+'" width="'+w+'" height="3" rx="1.5" style="fill:var(--gray)"><title>'+p.lab+': chưa có dữ liệu</title></rect>'}
+  if(i%5===0||i===29)s+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" style="fill:var(--mut)">'+p.lab.split(", ").pop()+'</text>';
+ });
+ el("chart").innerHTML=s+'</svg>';
+}).catch(function(){el("sub").textContent="Không đọc được data.json"});
+</script></body></html>
