@@ -43,7 +43,7 @@ tr:last-child td{border-bottom:0}
 <tr><th></th><th class="g" colspan="5">MU6014 (HAN → PVG)</th><th class="g g3">Nối</th><th class="g g2" colspan="6">MU201</th></tr>
 <tr><th>Ngày</th><th>Tình trạng</th><th>Đi HAN</th><th>Đến PVG</th><th>Trễ đến</th><th>Cổng đến</th><th>Tại PVG</th><th>Tình trạng</th><th>Tuyến</th><th>Đi PVG</th><th>Đến</th><th>Trễ đến</th><th>Cổng đi</th></tr>
 </thead><tbody id="rows"></tbody></table></div></div>
-<p class="foot">Cột "Nối" = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 60 phút được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+<p class="foot">MU201 ở mỗi dòng là chuyến nối với MU6014 của dòng đó (có thể cất cánh sau nửa đêm, ngày hiện cạnh tuyến bay). Cột "Nối" = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 60 phút được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
 </main>
 <script>
 var L={scheduled:["Theo lịch",""],active:["Đang bay","act"],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
@@ -78,19 +78,21 @@ fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(
  var A=F.MU6014||{},B=F.MU201||{},now=new Date(),days=[];
  $("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu, workflow chưa chạy lần nào.";
  for(var i=0;i<30;i++){var d=new Date(now);d.setDate(now.getDate()-i);days.push({k:iso(d),lab:d.toLocaleDateString("vi-VN",{weekday:"short",day:"2-digit",month:"2-digit"})})}
- function conn(a,k){if(!a||!a.arr)return null;var sa=T(a.arr.scheduled),ra=T(a.arr.actual||a.arr.estimated||a.arr.scheduled);if(sa==null||ra==null)return null;
-  var b=B[k];if(!b||!b.dep||T(b.dep.scheduled)==null||T(b.dep.scheduled)<sa)b=B[nxt(k)];
-  if(!b||!b.dep||T(b.dep.scheduled)==null||T(b.dep.scheduled)<sa)return null;return Math.round((T(b.dep.scheduled)-ra)/60000)}
+ function okb(b){return b&&b.dep&&T(b.dep.scheduled)!=null}
+ function mate(k,a){var b0=B[k],k1=nxt(k),b1=B[k1],sa=a&&a.arr?T(a.arr.scheduled):null;
+  if(sa!=null){if(okb(b0)&&T(b0.dep.scheduled)>=sa)return{e:b0,k:k};if(okb(b1)&&T(b1.dep.scheduled)>=sa)return{e:b1,k:k1};return null}
+  if(okb(b1)&&+b1.dep.scheduled.slice(11,13)<12)return{e:b1,k:k1};return b0?{e:b0,k:k}:null}
  var tb=$("rows"),bufs=[],tight=0,lost=0;
- days.forEach(function(x){var a=A[x.k],b=B[x.k],h="<td>"+x.lab+"</td>";
+ days.forEach(function(x){var a=A[x.k],m=mate(x.k,a),b=m&&m.e,h="<td>"+x.lab+"</td>";
   if(!a&&!b){tb.insertAdjacentHTML("beforeend",'<tr><td>'+x.lab+'</td><td class="none" colspan="12">Chưa có dữ liệu</td></tr>');return}
   h+=a?'<td>'+pill(a)+'</td><td>'+pair(a.dep)+'</td><td>'+pair(a.arr)+'</td><td>'+dtxt(a)+'</td><td>'+gt(a.arr)+'</td>':'<td class="none" colspan="5">Chưa có dữ liệu</td>';
-  var v=conn(a,x.k),c='<td class="none">–</td>';
+  var v=null,c='<td class="none">–</td>';
+  if(a&&b&&a.arr){var ra=T(a.arr.actual||a.arr.estimated||a.arr.scheduled);if(ra!=null&&okb(b))v=Math.round((T(b.dep.scheduled)-ra)/60000)}
   if(v!=null){if(v<0){lost++;c='<td><span class="pill bad">Lỡ nối '+(-v)+' phút</span></td>'}
    else if(v>=720)c='<td><span class="pill ok">Qua đêm</span></td>';
    else{bufs.push(v);if(v<60){tight++;c='<td><span class="pill late">'+v+' phút</span></td>'}else c='<td><span class="pill ok">'+v+' phút</span></td>'}}
   h+=c;
-  h+=b?'<td>'+pill(b)+'</td><td>'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+'</td><td>'+pair(b.dep)+'</td><td>'+pair(b.arr)+'</td><td>'+dtxt(b)+'</td><td>'+gt(b.dep)+'</td>':'<td class="none" colspan="6">Chưa có dữ liệu</td>';
+  h+=b?'<td>'+pill(b)+'</td><td>'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+' · '+m.k.slice(8)+'/'+m.k.slice(5,7)+'</td><td>'+pair(b.dep)+'</td><td>'+pair(b.arr)+'</td><td>'+dtxt(b)+'</td><td>'+gt(b.dep)+'</td>':'<td class="none" colspan="6">Chưa có dữ liệu</td>';
   tb.insertAdjacentHTML("beforeend","<tr>"+h+"</tr>")});
  var SA=stat(A,days),SB=stat(B,days);
  chart("c1",SA);chart("c2",SB);cap("c1t",SA);cap("c2t",SB);
