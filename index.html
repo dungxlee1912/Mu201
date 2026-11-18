@@ -1,91 +1,103 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Theo dõi chuyến bay MU201</title>
+<title>Theo dõi MU6014 + MU201</title>
 <style>
 :root{--bg:#eef3f9;--card:#fff;--tx:#14213d;--mut:#5b6b82;--bd:#d9e2ee;--ac:#0b5cab;--ac2:#e11d48;--ok:#0f9f6e;--warn:#e08a00;--bad:#d92d20;--gray:#b6c0cf;--hd:linear-gradient(135deg,#0b5cab,#1d3f8a);color-scheme:light dark}
 @media(prefers-color-scheme:dark){:root{--bg:#0e1522;--card:#17202f;--tx:#e8eef8;--mut:#93a3bb;--bd:#26334a;--ac:#5aa9ff;--ac2:#ff6b8b;--ok:#34d399;--warn:#fbbf24;--bad:#ff7b72;--gray:#3a4961;--hd:linear-gradient(135deg,#123a73,#1b2f66)}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-header{background:var(--hd);color:#fff;padding:22px 16px 26px}
-.in{max-width:1040px;margin:0 auto}
+header{background:var(--hd);color:#fff;padding:22px 16px 26px}.in{max-width:1100px;margin:0 auto}
 header h1{font-size:24px;margin:0 0 4px}header p{margin:0;opacity:.85;font-size:14px}
-main{max-width:1040px;margin:-14px auto 0;padding:0 16px 40px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+main{max-width:1100px;margin:-14px auto 0;padding:0 16px 40px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .s{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;border-top:3px solid var(--ac)}
-.s:nth-child(2){border-top-color:var(--ok)}.s:nth-child(3){border-top-color:var(--warn)}.s:nth-child(4){border-top-color:var(--bad)}.s:nth-child(5){border-top-color:var(--ac2)}
+.s:nth-child(2){border-top-color:var(--warn)}.s:nth-child(3){border-top-color:var(--ok)}.s:nth-child(4){border-top-color:var(--ac2)}.s:nth-child(5){border-top-color:var(--bad)}
 .s b{display:block;font-size:22px}.s span{color:var(--mut);font-size:13px}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-bottom:14px;overflow:hidden}
-.card h2{font-size:15px;margin:0;padding:12px 14px 0}
-.chart{overflow-x:auto;padding:6px 10px 10px}
+.card h2{font-size:15px;margin:0;padding:12px 14px 0}.cap{color:var(--mut);font-size:13px;padding:0 14px}
+.chart{overflow-x:auto;padding:6px 10px 6px}
 .leg{display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:12px;padding:0 14px 10px}
 .leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-.wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:900px}th,td{padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:1250px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}
 th{font-size:12px;color:var(--mut);text-transform:uppercase;background:var(--bg)}
+th.g{text-align:center;color:#fff;background:var(--ac)}th.g2{background:var(--ac2)}th.g3{background:var(--ok)}
 tr:last-child td{border-bottom:0}
 .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;color:#fff;background:var(--gray)}
 .pill.ok{background:var(--ok)}.pill.late{background:var(--warn)}.pill.bad{background:var(--bad)}.pill.act{background:var(--ac)}
-.none{color:var(--mut)}
-.foot{color:var(--mut);font-size:13px}a{color:var(--ac)}
+.none{color:var(--mut)}.foot{color:var(--mut);font-size:13px}a{color:var(--ac)}
 </style></head><body>
-<header><div class="in"><h1>✈️ MU201 · China Eastern Airlines</h1><p id="sub">Đang tải…</p></div></header>
+<header><div class="in"><h1>✈️ Hà Nội → Thượng Hải → MU201</h1><p id="sub">Đang tải…</p></div></header>
 <main>
 <div class="stats">
-<div class="s"><b id="a1">–</b><span>Ngày có dữ liệu</span></div>
-<div class="s"><b id="a2">–</b><span>Tỷ lệ đúng giờ</span></div>
-<div class="s"><b id="a3">–</b><span>Trễ trung bình (phút)</span></div>
-<div class="s"><b id="a4">–</b><span>Hủy / chuyển hướng</span></div>
-<div class="s"><b id="a5">–</b><span>Trễ nhiều nhất (phút)</span></div>
+<div class="s"><b id="a1">–</b><span>Thời gian nối chuyến TB (phút)</span></div>
+<div class="s"><b id="a2">–</b><span>Nối sát (&lt; 60 phút) / lỡ nối</span></div>
+<div class="s"><b id="a3">–</b><span>MU6014 đúng giờ</span></div>
+<div class="s"><b id="a4">–</b><span>MU201 đúng giờ</span></div>
+<div class="s"><b id="a5">–</b><span>Hủy / chuyển hướng (cả hai)</span></div>
 </div>
-<div class="card"><h2>Số phút trễ khi đến, 30 ngày gần nhất</h2>
-<div class="chart" id="chart"></div>
+<div class="card"><h2>MU6014 · Hà Nội → Thượng Hải: số phút trễ khi đến</h2><div class="cap" id="c1t"></div><div class="chart" id="c1"></div></div>
+<div class="card"><h2>MU201: số phút trễ khi đến</h2><div class="cap" id="c2t"></div><div class="chart" id="c2"></div>
 <div class="leg"><span><i style="background:var(--ok)"></i>Đúng giờ (≤ 15 phút)</span><span><i style="background:var(--warn)"></i>Trễ</span><span><i style="background:var(--bad)"></i>Hủy / chuyển hướng</span><span><i style="background:var(--gray)"></i>Chưa có dữ liệu</span></div></div>
-<div class="card"><div class="wrap"><table><thead><tr><th>Ngày</th><th>Tình trạng</th><th>Tuyến</th><th>Đi (dự kiến → thực tế)</th><th>Đến (dự kiến → thực tế)</th><th>Cổng đi</th><th>Cổng đến</th><th>Trễ đến</th></tr></thead><tbody id="rows"></tbody></table></div></div>
-<p class="foot">Dữ liệu tự cập nhật 2 lần mỗi ngày từ Aviationstack. Giờ hiển thị là giờ địa phương tại từng sân bay. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
+<div class="card"><div class="wrap"><table><thead>
+<tr><th></th><th class="g" colspan="5">MU6014 (HAN → PVG)</th><th class="g g3">Nối</th><th class="g g2" colspan="6">MU201</th></tr>
+<tr><th>Ngày</th><th>Tình trạng</th><th>Đi HAN</th><th>Đến PVG</th><th>Trễ đến</th><th>Cổng đến</th><th>Tại PVG</th><th>Tình trạng</th><th>Tuyến</th><th>Đi PVG</th><th>Đến</th><th>Trễ đến</th><th>Cổng đi</th></tr>
+</thead><tbody id="rows"></tbody></table></div></div>
+<p class="foot">Cột "Nối" = thời gian từ lúc MU6014 đến PVG (thực tế) tới giờ MU201 cất cánh theo lịch; dưới 60 phút được tô vàng, chỉ là mốc tham khảo, thời gian nối tối thiểu thực tế tùy sân bay và hãng. Giờ hiển thị là giờ địa phương tại từng sân bay. Dữ liệu cập nhật mỗi ngày từ Aviationstack. Tra cứu chính thức: <a href="https://www.ceair.com/en/usd/self-service/before/flight-status" target="_blank" rel="noopener">China Eastern</a>.</p>
 </main>
 <script>
 var L={scheduled:["Theo lịch",""],active:["Đang bay","act"],landed:["Đã hạ cánh",""],cancelled:["Đã hủy","bad"],incident:["Sự cố","bad"],diverted:["Chuyển hướng","bad"]};
+function $(i){return document.getElementById(i)}
 function hm(s){return s?s.slice(11,16):"–"}
+function pair(p){return p?hm(p.scheduled)+" → "+hm(p.actual||p.estimated):"–"}
 function gt(s){if(!s)return "–";var a=[];if(s.terminal)a.push("T"+s.terminal);if(s.gate)a.push("Cổng "+s.gate);return a.join(" · ")||"–"}
 function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-function el(id){return document.getElementById(id)}
-fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(db){
- var f=db.flights||{},tb=el("rows"),n=0,ok=0,sum=0,cnt=0,bad=0,mx=0,now=new Date(),pts=[];
- el("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu, workflow chưa chạy lần nào.";
- for(var i=0;i<30;i++){
-  var d=new Date(now);d.setDate(now.getDate()-i);var k=iso(d),e=f[k],tr=document.createElement("tr");
-  var lab=d.toLocaleDateString("vi-VN",{weekday:"short",day:"2-digit",month:"2-digit"});
-  if(!e){pts.push({lab:lab,t:"none"});tr.innerHTML='<td>'+lab+'</td><td class="none" colspan="7">Chưa có dữ liệu</td>';tb.appendChild(tr);continue}
-  n++;var dl=e.arr&&e.arr.delay!=null?e.arr.delay:(e.dep&&e.dep.delay!=null?e.dep.delay:null);
-  var m=L[e.status]||[e.status||"?",""],cls=m[1],isBad=(e.status==="cancelled"||e.status==="diverted"||e.status==="incident");
-  if(!cls&&dl!=null)cls=dl>15?"late":"ok";
-  if(isBad){bad++;pts.push({lab:lab,t:"bad"})}
-  else if(dl!=null){sum+=dl;cnt++;if(dl<=15)ok++;if(dl>mx)mx=dl;pts.push({lab:lab,t:dl>15?"late":"ok",v:dl})}
-  else pts.push({lab:lab,t:"none"});
-  tr.innerHTML='<td>'+lab+'</td><td><span class="pill '+cls+'">'+m[0]+'</span></td><td>'+(e.dep.iata||"?")+' → '+(e.arr.iata||"?")+'</td>'
-   +'<td>'+hm(e.dep.scheduled)+' → '+hm(e.dep.actual||e.dep.estimated)+'</td>'
-   +'<td>'+hm(e.arr.scheduled)+' → '+hm(e.arr.actual||e.arr.estimated)+'</td>'
-   +'<td>'+gt(e.dep)+'</td><td>'+gt(e.arr)+'</td><td>'+(dl==null?"–":dl+" phút")+'</td>';
-  tb.appendChild(tr);
- }
- el("a1").textContent=n+"/30";
- el("a2").textContent=cnt?Math.round(ok/cnt*100)+"%":"–";
- el("a3").textContent=cnt?Math.round(sum/cnt):"–";
- el("a4").textContent=n?bad:"–";
- el("a5").textContent=cnt?mx:"–";
- // Biểu đồ cột (cũ → mới)
- pts.reverse();
- var W=720,H=200,pl=34,pb=26,pt=10,cw=(W-pl-8)/30,top=Math.max(30,Math.ceil(mx/10)*10),ph=H-pb-pt;
+function T(s){return s?Date.parse(s.slice(0,16)+":00Z"):null}
+function nxt(k){var d=new Date(k+"T00:00:00");d.setDate(d.getDate()+1);return iso(d)}
+function dly(e){if(e.arr&&e.arr.delay!=null)return e.arr.delay;return e.dep&&e.dep.delay!=null?e.dep.delay:null}
+function cls(e){if(!e)return{t:"none"};if(e.status==="cancelled"||e.status==="diverted"||e.status==="incident")return{t:"bad"};var d=dly(e);return d==null?{t:"none"}:{t:d>15?"late":"ok",v:d}}
+function pill(e){if(!e)return '<span class="none">–</span>';var m=L[e.status]||[e.status||"?",""],c=m[1];if(!c){var q=cls(e);c=q.t==="late"?"late":q.t==="ok"?"ok":""}return '<span class="pill '+c+'">'+m[0]+'</span>'}
+function dtxt(e){if(!e)return "–";var d=dly(e);return d==null?"–":d+" phút"}
+function stat(F,days){var n=0,ok=0,sum=0,cnt=0,bad=0,mx=0,pts=[];
+ days.forEach(function(x){var e=F[x.k],c=cls(e);if(e)n++;if(c.t==="bad")bad++;else if(c.v!=null){cnt++;sum+=c.v;if(c.v<=15)ok++;if(c.v>mx)mx=c.v}pts.push({lab:x.lab,t:c.t,v:c.v})});
+ return{n:n,ok:ok,sum:sum,cnt:cnt,bad:bad,mx:mx,pts:pts.reverse()}}
+function chart(id,S){
+ var W=720,H=190,pl=34,pb=26,pt=10,cw=(W-pl-8)/30,top=Math.max(30,Math.ceil(S.mx/10)*10),ph=H-pb-pt;
  function Y(v){return pt+ph-v/top*ph}
- var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="min-width:560px;max-height:240px" role="img" aria-label="Biểu đồ số phút trễ">';
- [0,15,top].forEach(function(v,ix){s+='<line x1="'+pl+'" x2="'+(W-8)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" style="stroke:var(--bd)"'+(v===15?' stroke-dasharray="4 3"':'')+'/><text x="'+(pl-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="10" style="fill:var(--mut)">'+v+'</text>'});
- pts.forEach(function(p,i){
-  var x=pl+i*cw+cw*.15,w=cw*.7,c;
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="min-width:560px;max-height:230px" role="img">';
+ [0,15,top].forEach(function(v){s+='<line x1="'+pl+'" x2="'+(W-8)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" style="stroke:var(--bd)"'+(v===15?' stroke-dasharray="4 3"':'')+'/><text x="'+(pl-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="10" style="fill:var(--mut)">'+v+'</text>'});
+ S.pts.forEach(function(p,i){var x=pl+i*cw+cw*.15,w=cw*.7;
   if(p.t==="ok"||p.t==="late"){var h=Math.max(2,p.v/top*ph);s+='<rect x="'+x+'" y="'+(pt+ph-h)+'" width="'+w+'" height="'+h+'" rx="3" style="fill:var(--'+(p.t==="ok"?"ok":"warn")+')"><title>'+p.lab+': trễ '+p.v+' phút</title></rect>'}
-  else if(p.t==="bad"){s+='<rect x="'+x+'" y="'+(pt+ph-ph*.5)+'" width="'+w+'" height="'+ph*.5+'" rx="3" style="fill:var(--bad)"><title>'+p.lab+': hủy / chuyển hướng</title></rect>'}
-  else{s+='<rect x="'+x+'" y="'+(pt+ph-3)+'" width="'+w+'" height="3" rx="1.5" style="fill:var(--gray)"><title>'+p.lab+': chưa có dữ liệu</title></rect>'}
-  if(i%5===0||i===29)s+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" style="fill:var(--mut)">'+p.lab.split(", ").pop()+'</text>';
- });
- el("chart").innerHTML=s+'</svg>';
-}).catch(function(){el("sub").textContent="Không đọc được data.json"});
+  else if(p.t==="bad")s+='<rect x="'+x+'" y="'+(pt+ph*.5)+'" width="'+w+'" height="'+ph*.5+'" rx="3" style="fill:var(--bad)"><title>'+p.lab+': hủy / chuyển hướng</title></rect>';
+  else s+='<rect x="'+x+'" y="'+(pt+ph-3)+'" width="'+w+'" height="3" rx="1.5" style="fill:var(--gray)"><title>'+p.lab+': chưa có dữ liệu</title></rect>';
+  if(i%5===0||i===29)s+='<text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" style="fill:var(--mut)">'+p.lab.split(", ").pop()+'</text>'});
+ $(id).innerHTML=s+'</svg>'}
+function cap(id,S){$(id).textContent=S.n+"/30 ngày có dữ liệu · đúng giờ "+(S.cnt?Math.round(S.ok/S.cnt*100)+"%":"–")+" · trễ TB "+(S.cnt?Math.round(S.sum/S.cnt)+" phút":"–")+" · hủy/chuyển hướng "+S.bad}
+fetch("data.json?"+Date.now()).then(function(r){return r.json()}).then(function(db){
+ var F=db.flights||{},ks=Object.keys(F);if(ks.length&&/^\d{4}-/.test(ks[0]))F={MU201:F};
+ var A=F.MU6014||{},B=F.MU201||{},now=new Date(),days=[];
+ $("sub").textContent=db.updated?"Cập nhật lần cuối: "+new Date(db.updated).toLocaleString("vi-VN"):"Chưa có dữ liệu, workflow chưa chạy lần nào.";
+ for(var i=0;i<30;i++){var d=new Date(now);d.setDate(now.getDate()-i);days.push({k:iso(d),lab:d.toLocaleDateString("vi-VN",{weekday:"short",day:"2-digit",month:"2-digit"})})}
+ function conn(a,k){if(!a||!a.arr)return null;var sa=T(a.arr.scheduled),ra=T(a.arr.actual||a.arr.estimated||a.arr.scheduled);if(sa==null||ra==null)return null;
+  var b=B[k];if(!b||!b.dep||T(b.dep.scheduled)==null||T(b.dep.scheduled)<sa)b=B[nxt(k)];
+  if(!b||!b.dep||T(b.dep.scheduled)==null||T(b.dep.scheduled)<sa)return null;return Math.round((T(b.dep.scheduled)-ra)/60000)}
+ var tb=$("rows"),bufs=[],tight=0,lost=0;
+ days.forEach(function(x){var a=A[x.k],b=B[x.k],h="<td>"+x.lab+"</td>";
+  if(!a&&!b){tb.insertAdjacentHTML("beforeend",'<tr><td>'+x.lab+'</td><td class="none" colspan="12">Chưa có dữ liệu</td></tr>');return}
+  h+=a?'<td>'+pill(a)+'</td><td>'+pair(a.dep)+'</td><td>'+pair(a.arr)+'</td><td>'+dtxt(a)+'</td><td>'+gt(a.arr)+'</td>':'<td class="none" colspan="5">Chưa có dữ liệu</td>';
+  var v=conn(a,x.k),c='<td class="none">–</td>';
+  if(v!=null){if(v<0){lost++;c='<td><span class="pill bad">Lỡ nối '+(-v)+' phút</span></td>'}
+   else if(v>=720)c='<td><span class="pill ok">Qua đêm</span></td>';
+   else{bufs.push(v);if(v<60){tight++;c='<td><span class="pill late">'+v+' phút</span></td>'}else c='<td><span class="pill ok">'+v+' phút</span></td>'}}
+  h+=c;
+  h+=b?'<td>'+pill(b)+'</td><td>'+(b.dep.iata||"?")+' → '+(b.arr.iata||"?")+'</td><td>'+pair(b.dep)+'</td><td>'+pair(b.arr)+'</td><td>'+dtxt(b)+'</td><td>'+gt(b.dep)+'</td>':'<td class="none" colspan="6">Chưa có dữ liệu</td>';
+  tb.insertAdjacentHTML("beforeend","<tr>"+h+"</tr>")});
+ var SA=stat(A,days),SB=stat(B,days);
+ chart("c1",SA);chart("c2",SB);cap("c1t",SA);cap("c2t",SB);
+ $("a1").textContent=bufs.length?Math.round(bufs.reduce(function(p,q){return p+q},0)/bufs.length):"–";
+ $("a2").textContent=bufs.length||lost?tight+" / "+lost:"–";
+ $("a3").textContent=SA.cnt?Math.round(SA.ok/SA.cnt*100)+"%":"–";
+ $("a4").textContent=SB.cnt?Math.round(SB.ok/SB.cnt*100)+"%":"–";
+ $("a5").textContent=(SA.n||SB.n)?SA.bad+SB.bad:"–";
+}).catch(function(){$("sub").textContent="Không đọc được data.json"});
 </script></body></html>
