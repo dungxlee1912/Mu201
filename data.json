@@ -115,6 +115,29 @@
      "terminal": "1"
     },
     "status": "landed"
+   },
+   "2026-11-22": {
+    "arr": {
+     "actual": "2026-11-22T06:06:00+00:00",
+     "airport": "Gatwick",
+     "delay": 0,
+     "estimated": "2026-11-22T06:06:00+00:00",
+     "gate": null,
+     "iata": "LGW",
+     "scheduled": "2026-11-22T06:30:00+00:00",
+     "terminal": "N"
+    },
+    "dep": {
+     "actual": "2026-11-22T02:17:00+00:00",
+     "airport": "Shanghai Pudong International",
+     "delay": 27,
+     "estimated": "2026-11-22T01:50:00+00:00",
+     "gate": "G122",
+     "iata": "PVG",
+     "scheduled": "2026-11-22T01:50:00+00:00",
+     "terminal": "1"
+    },
+    "status": "landed"
    }
   },
   "MU6014": {
@@ -212,30 +235,53 @@
    },
    "2026-11-21": {
     "arr": {
-     "actual": null,
+     "actual": "2026-11-21T22:46:00+00:00",
      "airport": "Shanghai Pudong International",
-     "delay": null,
-     "estimated": null,
+     "delay": 0,
+     "estimated": "2026-11-21T22:48:00+00:00",
      "gate": null,
      "iata": "PVG",
      "scheduled": "2026-11-21T22:50:00+00:00",
      "terminal": "1"
     },
     "dep": {
+     "actual": "2026-11-21T19:02:00+00:00",
+     "airport": "Noibai International",
+     "delay": 17,
+     "estimated": "2026-11-21T18:45:00+00:00",
+     "gate": "49",
+     "iata": "HAN",
+     "scheduled": "2026-11-21T18:45:00+00:00",
+     "terminal": "2"
+    },
+    "status": "landed"
+   },
+   "2026-11-22": {
+    "arr": {
+     "actual": null,
+     "airport": "Shanghai Pudong International",
+     "delay": null,
+     "estimated": null,
+     "gate": null,
+     "iata": "PVG",
+     "scheduled": "2026-11-22T22:50:00+00:00",
+     "terminal": "1"
+    },
+    "dep": {
      "actual": null,
      "airport": "Noibai International",
      "delay": 0,
-     "estimated": "2026-11-21T18:45:00+00:00",
+     "estimated": "2026-11-22T18:45:00+00:00",
      "gate": "44",
      "iata": "HAN",
-     "scheduled": "2026-11-21T18:45:00+00:00",
+     "scheduled": "2026-11-22T18:45:00+00:00",
      "terminal": "2"
     },
     "status": "scheduled"
    }
   }
  },
- "updated": "2026-11-21T08:24:22Z",
+ "updated": "2026-11-22T08:24:29Z",
  "use": {
   "MU201": "flight_iata",
   "MU6014": "flight_iata"
