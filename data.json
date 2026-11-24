@@ -161,6 +161,29 @@
      "terminal": "1"
     },
     "status": "landed"
+   },
+   "2026-11-24": {
+    "arr": {
+     "actual": "2026-11-24T06:01:00+00:00",
+     "airport": "Gatwick",
+     "delay": 0,
+     "estimated": "2026-11-24T06:01:00+00:00",
+     "gate": null,
+     "iata": "LGW",
+     "scheduled": "2026-11-24T06:30:00+00:00",
+     "terminal": "N"
+    },
+    "dep": {
+     "actual": "2026-11-24T02:03:00+00:00",
+     "airport": "Shanghai Pudong International",
+     "delay": 13,
+     "estimated": "2026-11-24T01:50:00+00:00",
+     "gate": "G121",
+     "iata": "PVG",
+     "scheduled": "2026-11-24T01:50:00+00:00",
+     "terminal": "1"
+    },
+    "status": "landed"
    }
   },
   "MU6014": {
@@ -304,30 +327,53 @@
    },
    "2026-11-23": {
     "arr": {
-     "actual": null,
+     "actual": "2026-11-23T22:51:00+00:00",
      "airport": "Shanghai Pudong International",
-     "delay": null,
-     "estimated": null,
+     "delay": 1,
+     "estimated": "2026-11-23T22:49:00+00:00",
      "gate": null,
      "iata": "PVG",
      "scheduled": "2026-11-23T22:50:00+00:00",
      "terminal": "1"
     },
     "dep": {
-     "actual": null,
+     "actual": "2026-11-23T19:12:00+00:00",
      "airport": "Noibai International",
-     "delay": 0,
+     "delay": 27,
      "estimated": "2026-11-23T18:45:00+00:00",
      "gate": "46",
      "iata": "HAN",
      "scheduled": "2026-11-23T18:45:00+00:00",
+     "terminal": "T2"
+    },
+    "status": "landed"
+   },
+   "2026-11-24": {
+    "arr": {
+     "actual": null,
+     "airport": "Shanghai Pudong International",
+     "delay": null,
+     "estimated": null,
+     "gate": null,
+     "iata": "PVG",
+     "scheduled": "2026-11-24T22:50:00+00:00",
+     "terminal": "S1"
+    },
+    "dep": {
+     "actual": null,
+     "airport": "Noibai International",
+     "delay": 0,
+     "estimated": "2026-11-24T18:45:00+00:00",
+     "gate": "44",
+     "iata": "HAN",
+     "scheduled": "2026-11-24T18:45:00+00:00",
      "terminal": "2"
     },
     "status": "scheduled"
    }
   }
  },
- "updated": "2026-11-23T08:54:35Z",
+ "updated": "2026-11-24T08:40:11Z",
  "use": {
   "MU201": "flight_iata",
   "MU6014": "flight_iata"
