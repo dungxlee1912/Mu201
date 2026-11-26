@@ -396,30 +396,53 @@
    },
    "2026-11-25": {
     "arr": {
-     "actual": null,
+     "actual": "2026-11-25T22:48:00+00:00",
      "airport": "Shanghai Pudong International",
-     "delay": null,
-     "estimated": null,
+     "delay": 0,
+     "estimated": "2026-11-25T22:52:00+00:00",
      "gate": null,
      "iata": "PVG",
      "scheduled": "2026-11-25T22:50:00+00:00",
      "terminal": "1"
     },
     "dep": {
-     "actual": null,
+     "actual": "2026-11-25T19:06:00+00:00",
      "airport": "Noibai International",
-     "delay": 0,
+     "delay": 21,
      "estimated": "2026-11-25T18:45:00+00:00",
      "gate": "46",
      "iata": "HAN",
      "scheduled": "2026-11-25T18:45:00+00:00",
      "terminal": "2"
     },
+    "status": "landed"
+   },
+   "2026-11-26": {
+    "arr": {
+     "actual": null,
+     "airport": "Shanghai Pudong International",
+     "delay": null,
+     "estimated": null,
+     "gate": null,
+     "iata": "PVG",
+     "scheduled": "2026-11-26T22:50:00+00:00",
+     "terminal": "1"
+    },
+    "dep": {
+     "actual": null,
+     "airport": "Noibai International",
+     "delay": null,
+     "estimated": "2026-11-26T18:45:00+00:00",
+     "gate": "44",
+     "iata": "HAN",
+     "scheduled": "2026-11-26T18:45:00+00:00",
+     "terminal": "2"
+    },
     "status": "scheduled"
    }
   }
  },
- "updated": "2026-11-25T08:44:20Z",
+ "updated": "2026-11-26T08:42:25Z",
  "use": {
   "MU201": "flight_iata",
   "MU6014": "flight_iata"
